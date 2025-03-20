@@ -1,10 +1,9 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
+  integrations: [mdx()],
+  site: "https://shaik-nvd.github.io/C_Astro/",
+  base: "/C_Astro/",
+  output: "static",
 });
