@@ -1,0 +1,22 @@
+---
+const { quote, author, company, avatarSrc } = Astro.props;
+import { Icon } from "astro-icon/components";
+---
+
+<div class="bg-white rounded-xl p-6 shadow-lg">
+  <div class="mb-4 text-blue-600">
+    <Icon name="mdi:format-quote-open" class="w-8 h-8" />
+  </div>
+  <p class="text-gray-800 mb-6 italic">{quote}</p>
+  <div class="flex items-center">
+    <img 
+      src={avatarSrc || "/images/placeholder-avatar.png"} 
+      alt={author} 
+      class="w-12 h-12 rounded-full mr-4 object-cover"
+    />
+    <div>
+      <h4 class="font-bold">{author}</h4>
+      <p class="text-gray-600 text-sm">{company}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+---
+import NavBar from "../components/NavBar.astro";
+import { getCollection } from 'astro:content';
+
+const name = "Caprolok";
+const posts = await getCollection('blog');
+---
+
+<NavBar />
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  a {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #ff9800;
+  }
+  .blog-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .blog-item {
+    padding: 15px;
+    border-radius: 8px;
+    background: #1e1e1e;
+    margin: 10px auto;
+    max-width: 500px;
+    transition: transform 0.2s ease-in-out, background 0.3s;
+  }
+  .blog-item:hover {
+    background: #222;
+    transform: scale(1.02);
+  }
+  #time {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+</style>
+
+<h1>Hello, {name}! &#128640;</h1>
+<p>Welcome to my first Astro project.</p>
+<p>The current time is: <strong id="time"></strong></p>
+
+<h2>Recent Blog Posts</h2>
+<ul class="blog-list">
+  {posts.map((post) => (
+    <li class="blog-item">
+      <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+      <p style="font-size: 0.8rem; color: #bbb;">&#128197; {new Date(post.data.date).toDateString()}</p>
+    </li>
+  ))}
+</ul>
+
+<script>
+  window.onload = function () {
+    function updateTime() {
+      const timeElement = document.getElementById("time");
+      if (timeElement) {
+        timeElement.innerText = new Date().toLocaleTimeString();
+      }
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  };
+</script>

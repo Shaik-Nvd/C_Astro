@@ -1,0 +1,49 @@
+---
+import NavBar from "../components/NavBar.astro";
+---
+
+<NavBar />
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #121212;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  .button-container {
+    margin-top: 20px;
+  }
+  .home-button {
+    padding: 10px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .home-button:hover {
+    background: #ff9800;
+  }
+</style>
+
+<h1>About Caprolok</h1>
+<p>This website is built using Astro JS.</p>
+
+<div class="button-container">
+  <a href="/" style="text-decoration: none;">
+    <button class="home-button">&#9654; Back to Home</button>
+  </a>
+</div>
